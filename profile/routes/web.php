@@ -3,6 +3,7 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\StudentController;
 use App\Http\Controllers\UserController;
+use App\Http\Controllers\FromController; // ✅ fix spelling
 
 
 Route::get('/', function () {   
@@ -28,7 +29,7 @@ Route::controller(StudentController::class)->group(function(){
 });                                                                     
 
 ///////////user controller////////
-Route::get('/user',[UserController::class,'updateData']);
+// Route::get('/user',[UserController::class,'updateData']);
 
 ////Route method////
 
@@ -57,6 +58,12 @@ Route::get('/user',[UserController::class,'updateData']);
 // Route::post('/users', [UserController::class, 'store']);    
 
 
-/// CRUD operations, Laravel has a shortcut//
 
+///http request////
+
+// Show the form
+Route::view('form', 'form');
+
+// Store form data
+Route::post('addform', [FromCOntroller::class, 'login']);
 
