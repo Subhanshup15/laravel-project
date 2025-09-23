@@ -4,6 +4,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\StudentController;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\FromController; // ✅ fix spelling
+use App\Http\Controllers\Session;
 
 
 Route::get('/', function () {   
@@ -67,3 +68,9 @@ Route::view('form', 'form');
 // Store form data
 Route::post('addform', [FromCOntroller::class, 'login']);
 
+///////////////session///////////////
+Route::view('session', 'session');
+Route::post('login', [Session::class, 'login']);
+
+/////session logout/////
+Route::get('logout', [Session::class, 'logout']);

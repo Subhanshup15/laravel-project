@@ -115,6 +115,15 @@
 <body>
 
   <header>
+    <!-- session use -->
+    {{ session('name') }}
+     <!-- session use -->
+
+
+ <!-- session All -->
+     {{ session('allData')['email'] }}
+      <!-- session All -->
+      <button> <a href="logout">logout</a></button>
     <h1>Subhanshu Pardeshi</h1>
     <p>Software Developer | Pune, Maharashtra</p>
     <div class="contact-icons">
@@ -213,6 +222,7 @@
   <footer>
     <p>© 2025 Subhanshu Pardeshi | Portfolio</p>
   </footer>
+
 
 </body>
 </html>
