@@ -26,4 +26,23 @@ class FromCOntroller extends Controller
 
         redirect('users');
     }
+
+
+
+    //flash  session  use///
+    function flashLogin(Request $request){
+        $request->session()->flash('messge',' add succesfully');  
+
+        return redirect('flash');
+
+    }
+
+    //end flash  session  use///
+
+   ///uplode file/////
+   function fileUplode(Request $request){
+     $request->session()->flash('success',' add succesfully'); 
+    echo "file uplode";
+
+   } 
 }

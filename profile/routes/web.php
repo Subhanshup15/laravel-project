@@ -3,9 +3,10 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\StudentController;
 use App\Http\Controllers\UserController;
-use App\Http\Controllers\FromController; // ✅ fix spelling
+use App\Http\Controllers\FromController; 
 use App\Http\Controllers\Session;
-
+use App\Http\Controllers\Uplodefile;
+ 
 
 Route::get('/', function () {   
     return view('profile');
@@ -19,12 +20,12 @@ Route::get('/reasume', function () {
 
 
 ////middleware singe route//
-Route::view('/','student')->Middleware('sagar');
+Route::view('/student','student')->Middleware('sagar');
 Route::view('/add','add');
  
 //group middleware
 Route::controller(StudentController::class)->group(function(){
-    Route::get('/', 'index')->Middleware('sagar');
+    Route::get('/index', 'index')->Middleware('sagar');
     Route::get('/add', 'add');
     Route::get('/delete', 'delete');
 });                                                                     
@@ -73,4 +74,16 @@ Route::view('session', 'session');
 Route::post('login', [Session::class, 'login']);
 
 /////session logout/////
-Route::get('logout', [Session::class, 'logout']);
+Route::get('logout', [Session::class, 'logout']); 
+
+////flash session////
+Route::view('flash', 'flash');
+Route::post('addflash', [FromCOntroller::class, 'flashLogin']);
+////end flash session////
+
+
+////uplode file/////
+Route::view('uplodefile', 'uplode');
+Route::post('addfile', [Uplodefile::class, 'fileUplode']);
+////end uplode file/////
+
