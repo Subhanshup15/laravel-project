@@ -218,6 +218,16 @@
                     @endforelse
                 </tbody>
             </table>
+
+            <!-- pagination use  -->
+            {{ $students->links() }}
+
+            <style>
+                .w-5.h-5 {
+                    width: 15px;
+                    height: 15px;
+                }
+            </style>
         </div>
     </div>
 

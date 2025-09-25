@@ -12,7 +12,7 @@ class StudentController extends Controller
     {
         return view('student');
     }
-   
+
     public function addStudent(Request $request)
     {
         // Validate incoming request
@@ -38,13 +38,17 @@ class StudentController extends Controller
 
 
     function studentlist()
-    {
-        $studentdata = student::all();
+    {   
+
+         ///all data show///
+        // $studentdata = student::all();
+        //pagination use//
+        $studentdata = student::paginate(5);
         return view('addstudent', ['students' => $studentdata]);
     }
 
 
-   public function edit($id)
+    public function edit($id)
     {
         $student = Student::findOrFail($id);
         return view('editStudent', compact('student'));
@@ -83,5 +87,4 @@ class StudentController extends Controller
 
         return view('addStudent', compact('students'));
     }
-
 }
