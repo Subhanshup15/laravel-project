@@ -138,9 +138,9 @@
 
         {{-- Language Switcher --}}
         <div class="text-end mb-3">
-            <a href="{{ url('langprofile/en') }}" class="btn btn-sm btn-secondary">English</a>
-            <a href="{{ url('langprofile/hi') }}" class="btn btn-sm btn-primary">हिंदी</a>
-            <a href="{{ url('langprofile/mr') }}" class="btn btn-sm btn-success">मराठी</a>
+            <a href="/Setlang/en" class="btn btn-sm btn-secondary">English</a>
+            <a href="/Setlang/hi " class="btn btn-sm btn-primary">हिंदी</a>
+            <a href="/Setlang/mr " class="btn btn-sm btn-success">मराठी</a>
         </div>
 
         <h1>{{ __('resume.title') }}</h1>

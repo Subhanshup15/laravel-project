@@ -2,12 +2,35 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\StudentController;
-use App\Http\Controllers\UserController;
 use App\Http\Controllers\FromController;
 use App\Http\Controllers\Session;
 use App\Http\Controllers\Uplodefile;
 use Illuminate\Support\Facades\App;
 
+
+/////////// add student///
+
+
+Route::view('addStudent', 'addStudent');
+Route::post('addStudent', [StudentController::class, 'addStudent'])->name('students.store');
+Route::get('addStudent', [StudentController::class, 'studentlist']);
+Route::get('editStudent/{id}', [StudentController::class, 'edit'])->name('students.edit');
+Route::put('updateStudent/{id}', [StudentController::class, 'update'])->name('students.update');
+Route::delete('deleteStudent/{id}', [StudentController::class, 'delete'])->name('students.destroy');
+
+
+
+
+
+    
+
+
+
+
+
+
+
+//////////////////
 Route::get('/', function () {
     return view('profile');
 });
@@ -26,8 +49,8 @@ Route::view('/add', 'add');
 //group middleware
 Route::controller(StudentController::class)->group(function () {
     Route::get('/index', 'index')->Middleware('sagar');
-    Route::get('/add', 'add');
-    Route::get('/delete', 'delete');
+    // Route::get('/add', 'add');
+    // Route::get('/delete', 'delete');
 });
 
 ///////////user controller////////
@@ -99,3 +122,22 @@ Route::get('langprofile/{lang}', function ($lang) {
 });
 
 ///////////end localization//////////   
+
+////    middleware group/////
+Route::middleware(['Setlang'])->group(function () {
+    ///view method///
+    Route::view('langprofile', 'langprofile');
+    //// without session//
+    Route::get('langprofile/{lang}', function ($lang) {
+        App::setlocale($lang);
+        return view('langprofile');
+    });
+
+
+    // with session 
+    Route::get('Setlang/{lang}', function ($lang) {
+        session()->put('lang', $lang);
+        return redirect('langprofile');
+    });
+});
+////end middleware group/////   
