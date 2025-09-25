@@ -144,7 +144,13 @@
                 <input type="submit" value="Submit">
             </form>
         </div>
-
+        <form action="{{ route('students.index') }}" method="GET" style="margin-bottom: 20px; text-align:right;">
+            <input type="text" name="search" placeholder="Search by name, email, or phone"
+                value="{{ request()->get('search') }}"
+                style="padding: 8px; border-radius: 5px; border: 1px solid #ccc; width: 250px;">
+            <button type="submit" class="btn edit">Search</button>
+            <a href="{{ route('students.index') }}" class="btn delete">Reset</a>
+        </form>
         <div class="table-container">
             <h1>Student List</h1>
             <table>

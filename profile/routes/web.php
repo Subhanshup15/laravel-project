@@ -17,6 +17,8 @@ Route::get('addStudent', [StudentController::class, 'studentlist']);
 Route::get('editStudent/{id}', [StudentController::class, 'edit'])->name('students.edit');
 Route::put('updateStudent/{id}', [StudentController::class, 'update'])->name('students.update');
 Route::delete('deleteStudent/{id}', [StudentController::class, 'delete'])->name('students.destroy');
+///seach input///
+Route::get('students', [StudentController::class, 'search'])->name('students.index');
 
 
 

@@ -12,7 +12,7 @@ class StudentController extends Controller
     {
         return view('student');
     }
-   
+
     public function addStudent(Request $request)
     {
         // Validate incoming request
@@ -42,14 +42,13 @@ class StudentController extends Controller
         $studentdata = student::all();
         return view('addstudent', ['students' => $studentdata]);
     }
-
-
+    ////edit function/////                
     public function edit($id)
     {
         $student = Student::findOrFail($id);
         return view('editStudent', compact('student'));
     }
-
+    /////update function/////   
     public function update(Request $request, $id)
     {
         $student = Student::findOrFail($id);
@@ -60,11 +59,29 @@ class StudentController extends Controller
 
         return redirect('addStudent');
     }
+
+    //////delete fuction/////
     public function delete(Request $request, $id)
     {
         $student = Student::findOrFail($id);
         $student->delete();
 
         return redirect('addStudent');
+    }
+    //////// search function ////
+    public function search(Request $request)
+    {
+        $query = Student::query();
+
+        if ($request->has('search') && !empty($request->search)) {
+            $search = $request->search;
+            $query->where('name', 'LIKE', "%{$search}%")
+                ->orWhere('email', 'LIKE', "%{$search}%")
+                ->orWhere('phone', 'LIKE', "%{$search}%");
+        }
+
+        $students = $query->get();
+
+        return view('addStudent', compact('students'));
     }
 }
