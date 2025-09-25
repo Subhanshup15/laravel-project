@@ -1,0 +1,23 @@
+<?php
+return [
+    'title' => 'Subhanshu Sabhajit Pardeshi ',
+    'name' => 'Subhanshu Sabhajit Pardeshi',
+    'birth_date' => 'Birth Date',
+    'date' => '17-07-1999',
+     'Education' => 'Education',
+    'education' => 'Master’s in Computer Science',
+     'designation' => 'Designation',
+    'designation_' => 'Software Developer (2 years exp.)',
+    'height' => 'Height',
+    'address' => 'Address',
+    'permanent_address' => 'Permanent Address',
+    'father' => 'Father',
+    'mother' => 'Mother',
+    'sister' => 'Sister',
+     'fathername' => 'Sabhajit Mohal Pardeshi',
+    'mothername' => 'Sunita Sabhajit Pardeshi',
+    'sistername' => 'Sakshi Sabhajit Pardeshi',
+    'family_members' => 'Family Members',
+    'personal_info' => 'Personal Info',
+    'gallery_title' => 'SAGAR',
+];

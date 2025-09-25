@@ -136,6 +136,10 @@
 <body>
 
   <div class="container">
+      <div class="text-end mb-3">
+            <a href="{{ url('langprofile/en') }}" class="btn btn-sm btn-secondary">Diffrent Language</a>
+            
+        </div>
     <h1>Subhanshu Sabhajit Pardeshi Resume</h1>
 
     <!-- Resume Card -->
@@ -196,26 +200,8 @@
         </div>
       </div>
     </div>
-      @foreach($images as $index => $image)
-<div class="col-3 col-md-2">
-  <img src="{{ $image }}" class="img-fluid" alt="Gallery Image {{ $index + 1 }}"
-       data-bs-toggle="modal" data-bs-target="#galleryModal{{ $index + 1 }}">
-</div>
-@endforeach
-@foreach($images as $index => $image)
-<div class="modal fade" id="galleryModal{{ $index + 1 }}" tabindex="-1" aria-hidden="true">
-  <div class="modal-dialog modal-dialog-centered modal-xl">
-    <div class="modal-content bg-transparent border-0 shadow-none">
-      <div class="modal-body text-center p-0 position-relative">
-        <button type="button" class="btn-close btn-close-white position-absolute top-0 end-0 m-3"
-                data-bs-dismiss="modal"></button>
-        <img src="{{ $image }}" alt="Gallery Full {{ $index + 1 }}" class="img-fluid rounded shadow">
-      </div>
-    </div>
-  </div>
-</div>
-@endforeach
-
+     
+    
     <!-- Google Map -->
     <div class="text-center mb-5">
       <div class="map-container">

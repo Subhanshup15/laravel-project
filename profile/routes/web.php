@@ -3,12 +3,12 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\StudentController;
 use App\Http\Controllers\UserController;
-use App\Http\Controllers\FromController; 
+use App\Http\Controllers\FromController;
 use App\Http\Controllers\Session;
 use App\Http\Controllers\Uplodefile;
- 
+use Illuminate\Support\Facades\App;
 
-Route::get('/', function () {   
+Route::get('/', function () {
     return view('profile');
 });
 
@@ -20,15 +20,15 @@ Route::get('/reasume', function () {
 
 
 ////middleware singe route//
-Route::view('/student','student')->Middleware('sagar');
-Route::view('/add','add');
- 
+Route::view('/student', 'student')->Middleware('sagar');
+Route::view('/add', 'add');
+
 //group middleware
-Route::controller(StudentController::class)->group(function(){
+Route::controller(StudentController::class)->group(function () {
     Route::get('/index', 'index')->Middleware('sagar');
     Route::get('/add', 'add');
     Route::get('/delete', 'delete');
-});                                                                     
+});
 
 ///////////user controller////////
 // Route::get('/user',[UserController::class,'updateData']);
@@ -53,7 +53,7 @@ Route::controller(StudentController::class)->group(function(){
 // Route::any('/users', function () {return view('users');})->name('users');
 
 // Route::match(['get','post'],'/users', function () {return view('users');})->name('users');
-    
+
 //////Route Curd/////
 // Route::get('/users', [UserController::class, 'index']);
 // Route::get('/users/create', [UserController::class, 'create']);
@@ -74,7 +74,7 @@ Route::view('session', 'session');
 Route::post('login', [Session::class, 'login']);
 
 /////session logout/////
-Route::get('logout', [Session::class, 'logout']); 
+Route::get('logout', [Session::class, 'logout']);
 
 ////flash session////
 Route::view('flash', 'flash');
@@ -87,3 +87,15 @@ Route::view('uplodefile', 'uplode');
 Route::post('addfile', [Uplodefile::class, 'fileUplode']);
 ////end uplode file/////
 
+
+
+///////////localization//////////
+
+Route::view('langprofile', 'langprofile');
+
+Route::get('langprofile/{lang}', function ($lang) {
+    App::setlocale($lang);
+    return view('langprofile');
+});
+
+///////////end localization//////////   
