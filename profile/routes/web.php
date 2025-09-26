@@ -8,6 +8,7 @@ use App\Http\Controllers\Uplodefile;
 use Illuminate\Support\Facades\App;
 use App\Http\Controllers\AccessorController;
 use App\Http\Controllers\SellerControler;
+use App\Http\Controllers\EmailController;
 
 
 /////////// add student///
@@ -27,19 +28,33 @@ Route::delete('/students/bulk-delete', [StudentController::class, 'bulkDelete'])
 
 ////  assessor///
 Route::view('accessor', 'accessor');
-Route::get('accessor1', [AccessorController::class, 'accessor']);  
+Route::get('accessor1', [AccessorController::class, 'accessor']);
 Route::get('addaccessor', [AccessorController::class, 'addaccessor']);
 
 ///seller product///
-    Route::get('sellerlist', [SellerControler::class, 'sellerlist']);
-       
+Route::get('sellerlist', [SellerControler::class, 'sellerlist']);
+// one to many
+Route::get('sellerlistmany', [SellerControler::class, 'sellerlistmany']);
+// many to many
+Route::get('sellerlistmanytomany', [SellerControler::class, 'sellerlistmanytomany']);
+// many to one
+Route::get('sellerlistmanyToone', [SellerControler::class, 'sellerlistmanytoone']);
+///seller product end/// 
+
+///send email///
+Route::get('send-email', function () {
+    return view('send-email');
+})->name('send-email.form');
+Route::post('send-email', [EmailController::class, 'sendemail'])->name('send.email');
 
 
 
 
 
 
-    
+
+
+
 
 
 

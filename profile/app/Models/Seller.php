@@ -13,7 +13,22 @@ class Seller extends Model
     protected $table = 'seller';
 
     function products(){
+        // one to one relationship//
+        //use hasOne aslo model name//
         return $this->hasOne('App\Models\Product');
     } 
     
+    function productsmany(){
+        // one to many relationship//
+        //use hasMany aslo model name//
+        return $this->hasMany('App\Models\Product');
+    }
+
+    function productsmanyTomany(){
+        // many to many relationship//
+        //use belongsToMany aslo model name//
+        return $this->belongsToMany('App\Models\Product');
+    }
+
+ 
 }
