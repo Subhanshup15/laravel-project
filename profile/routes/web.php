@@ -6,7 +6,7 @@ use App\Http\Controllers\FromController;
 use App\Http\Controllers\Session;
 use App\Http\Controllers\Uplodefile;
 use Illuminate\Support\Facades\App;
-
+use App\Http\Controllers\AccessorController;
 
 /////////// add student///
 
@@ -22,6 +22,10 @@ Route::get('students', [StudentController::class, 'search'])->name('students.ind
 ///bulk delete///
 Route::delete('/students/bulk-delete', [StudentController::class, 'bulkDelete'])->name('students.bulkDelete');
 
+
+////  assessor///
+Route::view('accessor', 'accessor');
+Route::get('accessor1', [AccessorController::class, 'accessor']);         
 
 
 
