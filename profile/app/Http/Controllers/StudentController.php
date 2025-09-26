@@ -44,7 +44,7 @@ class StudentController extends Controller
         // $studentdata = student::all();
         //pagination use//
         $studentdata = student::paginate(5);
-        return view('addstudent', ['students' => $studentdata]);
+        return view('studntlist', ['students' => $studentdata]);
     }
 
 
@@ -69,7 +69,7 @@ class StudentController extends Controller
         $student = Student::findOrFail($id);
         $student->delete();
 
-        return redirect('addStudent');
+        return redirect('studentlist');
     }
 
     public function search(Request $request)
@@ -85,6 +85,20 @@ class StudentController extends Controller
 
         $students = $query->get();
 
-        return view('addStudent', compact('students'));
+        return view('studntlist', compact('students'));
     }
+
+    public function bulkDelete(Request $request)
+{
+    $ids = $request->ids;
+
+    if (!$ids) {
+        return redirect()->route('students.index')->with('error', 'No students selected');
+    }
+
+    Student::whereIn('id', $ids)->delete();
+
+    return redirect()->route('students.index')->with('success', 'Selected students deleted successfully');
+}
+
 }

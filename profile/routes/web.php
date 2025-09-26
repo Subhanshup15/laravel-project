@@ -13,12 +13,16 @@ use Illuminate\Support\Facades\App;
 
 Route::view('addStudent', 'addStudent');
 Route::post('addStudent', [StudentController::class, 'addStudent'])->name('students.store');
-Route::get('addStudent', [StudentController::class, 'studentlist']);
+Route::get('studentlist', [StudentController::class, 'studentlist']);
 Route::get('editStudent/{id}', [StudentController::class, 'edit'])->name('students.edit');
 Route::put('updateStudent/{id}', [StudentController::class, 'update'])->name('students.update');
 Route::delete('deleteStudent/{id}', [StudentController::class, 'delete'])->name('students.destroy');
 ///seach input///
 Route::get('students', [StudentController::class, 'search'])->name('students.index');
+///bulk delete///
+Route::delete('/students/bulk-delete', [StudentController::class, 'bulkDelete'])->name('students.bulkDelete');
+
+
 
 
 
