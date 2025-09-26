@@ -1,169 +1,91 @@
-<!DOCTYPE html>
-<html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
+<x-layout>
+    <x-slot name="title">Add Student</x-slot>
 
-<head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Student Management</title>
+    <x-slot name="main">
+        <div class="container mt-4">
+            <div class="row justify-content-center">
+                <div class="col-md-8">
+                    <div class="card shadow-sm">
+                        <div class="card-header bg-success text-white">
+                            <h5 class="mb-0">Add Student</h5>
+                        </div>
+                        <div class="card-body">
 
-    <!-- Fonts -->
-    <link rel="preconnect" href="https://fonts.bunny.net">
-    <link href="https://fonts.bunny.net/css?family=instrument-sans:400,500,600" rel="stylesheet" />
-    <!-- Bootstrap CSS -->
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
-</head>
+                            <!-- Success Message -->
+                            @if(session('success'))
+                            <div class="alert alert-success text-center">
+                                {{ session('success') }}
+                            </div>
+                            @endif
 
-<style>
-    body {
-        font-family: Arial, sans-serif;
-        background-color: #f4f6f8;
-        margin: 0;
-        padding: 20px;
-    }
+                            <!-- Validation Errors -->
+                            @if ($errors->any())
+                            <div class="alert alert-danger">
+                                <ul class="mb-0">
+                                    @foreach ($errors->all() as $error)
+                                    <li>{{ $error }}</li>
+                                    @endforeach
+                                </ul>
+                            </div>
+                            @endif
 
-    .container {
-        width: 90%;
-        max-width: 1000px;
-        margin: 0 auto;
-    }
+                            <!-- Form -->
+                            <form action="{{ route('students.store') }}" method="POST">
+                                @csrf
+ 
+                                <!-- Name -->
+                                <div class="mb-3">
+                                    <label for="name" class="form-label">Name</label>
+                                    <input type="text"
+                                        name="name"
+                                        id="name"
+                                        value="{{ old('name') }}"
+                                        class="form-control @error('name') is-invalid @enderror"
+                                        required>
+                                    @error('name')
+                                    <div class="invalid-feedback">{{ $message }}</div>
+                                    @enderror
+                                </div>
 
-    .form-container,
-    .table-container {
-        background-color: #fff;
-        padding: 30px;
-        border-radius: 10px;
-        box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
-        margin-bottom: 40px;
-    }
+                                <!-- Email -->
+                                <div class="mb-3">
+                                    <label for="email" class="form-label">Email</label>
+                                    <input type="email"
+                                        name="email"
+                                        id="email"
+                                        value="{{ old('email') }}"
+                                        class="form-control @error('email') is-invalid @enderror"
+                                        required>
+                                    @error('email')
+                                    <div class="invalid-feedback">{{ $message }}</div>
+                                    @enderror
+                                </div>
 
-    h1 {
-        text-align: center;
-        margin-bottom: 20px;
-        color: #333;
-    }
+                                <!-- Phone -->
+                                <div class="mb-3">
+                                    <label for="phone" class="form-label">Phone</label>
+                                    <input type="text"
+                                        name="phone"
+                                        id="phone"
+                                        value="{{ old('phone') }}"
+                                        class="form-control @error('phone') is-invalid @enderror"
+                                        required>
+                                    @error('phone')
+                                    <div class="invalid-feedback">{{ $message }}</div>
+                                    @enderror
+                                </div>
 
-    input[type="text"],
-    input[type="email"],
-    input[type="submit"] {
-        width: 100%;
-        padding: 12px;
-        margin: 10px 0;
-        border-radius: 6px;
-        box-sizing: border-box;
-        font-size: 14px;
-    }
+                                <!-- Buttons -->
+                                <div class="d-flex justify-content-between">
+                                    <a href="{{ route('students.index') }}" class="btn btn-secondary">Back</a>
+                                    <button type="submit" class="btn btn-success">Submit</button>
+                                </div>
+                            </form>
 
-    input[type="text"],
-    input[type="email"] {
-        border: 1px solid #ccc;
-    }
-
-    input[type="submit"] {
-        background-color: #4CAF50;
-        border: none;
-        color: white;
-        font-size: 16px;
-        cursor: pointer;
-        transition: 0.3s;
-    }
-
-    input[type="submit"]:hover {
-        background-color: #45a049;
-    }
-
-    table {
-        width: 100%;
-        border-collapse: collapse;
-        border-radius: 8px;
-        overflow: hidden;
-    }
-
-    th,
-    td {
-        padding: 12px 15px;
-        border-bottom: 1px solid #ddd;
-        text-align: left;
-    }
-
-    th {
-        background-color: #4CAF50;
-        color: white;
-    }
-
-    tr:hover {
-        background-color: #f1f1f1;
-    }
-
-    .btn {
-        padding: 6px 12px;
-        border-radius: 5px;
-        text-decoration: none;
-        color: white;
-        font-size: 14px;
-        margin-right: 5px;
-    }
-
-    .btn.edit {
-        background-color: #2196F3;
-    }
-
-    .btn.edit:hover {
-        background-color: #0b7dda;
-    }
-
-    .btn.delete {
-        background-color: #f44336;
-        border: none;
-        cursor: pointer;
-    }
-
-    .btn.delete:hover {
-        background-color: #da190b;
-    }
-
-    p.success {
-        color: green;
-        text-align: center;
-        margin-bottom: 15px;
-        font-weight: bold;
-    }
-</style>
-
-<body>
-    <div class="container">
-        <div class="form-container">
-            <h1>Add Student</h1>
-
-            @if(session('success'))
-            <p class="success">{{ session('success') }}</p>
-            @endif
-
-            @if ($errors->any())
-            <div style="color:red; text-align:left;">
-                <ul>
-                    @foreach ($errors->all() as $error)
-                    <li>{{ $error }}</li>
-                    @endforeach
-                </ul>
+                        </div>
+                    </div>
+                </div>
             </div>
-            @endif
-
-            <form action="{{ route('students.store') }}" method="POST">
-                @csrf
-                <input type="text" name="name" placeholder="Name" value="{{ old('name') }}" required>
-                <input type="email" name="email" placeholder="Email" value="{{ old('email') }}" required>
-                <input type="text" name="phone" placeholder="Phone" value="{{ old('phone') }}" required>
-                <input type="submit" value="Submit">
-            </form>
         </div>
-
-      
-    </div>
-
-  
-
-    <!-- Bootstrap JS -->
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
-</body>
-
-</html>
+    </x-slot>
+</x-layout>

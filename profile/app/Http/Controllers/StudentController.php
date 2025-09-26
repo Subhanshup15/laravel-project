@@ -19,7 +19,7 @@ class StudentController extends Controller
         $validatedData = $request->validate([
             'name'  => 'required|string|max:255',
             'email' => 'required|email|unique:students,email',
-            'phone' => 'required|digits:10',
+            'phone' => 'required|digits:10|unique:students,phone',
         ]);
 
         // Create new student
