@@ -25,7 +25,9 @@ Route::delete('/students/bulk-delete', [StudentController::class, 'bulkDelete'])
 
 ////  assessor///
 Route::view('accessor', 'accessor');
-Route::get('accessor1', [AccessorController::class, 'accessor']);         
+Route::get('accessor1', [AccessorController::class, 'accessor']);  
+Route::get('addaccessor', [AccessorController::class, 'addaccessor']);
+       
 
 
 
