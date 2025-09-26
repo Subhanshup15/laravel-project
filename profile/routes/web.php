@@ -7,6 +7,8 @@ use App\Http\Controllers\Session;
 use App\Http\Controllers\Uplodefile;
 use Illuminate\Support\Facades\App;
 use App\Http\Controllers\AccessorController;
+use App\Http\Controllers\SellerControler;
+
 
 /////////// add student///
 
@@ -27,6 +29,9 @@ Route::delete('/students/bulk-delete', [StudentController::class, 'bulkDelete'])
 Route::view('accessor', 'accessor');
 Route::get('accessor1', [AccessorController::class, 'accessor']);  
 Route::get('addaccessor', [AccessorController::class, 'addaccessor']);
+
+///seller product///
+    Route::get('sellerlist', [SellerControler::class, 'sellerlist']);
        
 
 
