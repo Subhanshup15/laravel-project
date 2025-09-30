@@ -12,8 +12,3 @@ Each commit reflects what I worked on during that day.
 - To maintain consistency in coding
 - To build a portfolio of my learning journey
 
-## 📝 Notes
-- Day 1: Worked on login page UI
-- Day 2: Added database connection
-- Day 3: Fixed bug in authentication
-- ...
