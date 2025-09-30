@@ -6,7 +6,7 @@ use App\Http\Controllers\SuperAdminController;
 use App\Http\Controllers\ProfileController;
 
 // Welcome Page
-Route::get('/', fn() => view('dashboard'));
+Route::get('/', fn() => view('welcome'));
 
 // User Routes
 Route::middleware(['auth'])->group(function () {
