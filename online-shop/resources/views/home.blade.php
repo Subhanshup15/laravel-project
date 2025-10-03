@@ -25,16 +25,16 @@
         <h2 class="text-center mb-4">Shop by Category</h2>
         <div class="row">
             @foreach($categories as $category)
-                <div class="col-md-2 col-sm-4 col-6 mb-3">
-                    <a href="{{ route('products.category', $category->slug) }}" class="text-decoration-none">
-                        <div class="card category-card text-center">
-                            <div class="card-body">
-                                <img src="{{ $category->image ?? 'https://via.placeholder.com/100' }}" alt="{{ $category->name }}" class="img-fluid mb-2" style="height: 80px;">
-                                <h6 class="card-title">{{ $category->name }}</h6>
-                            </div>
+            <div class="col-md-2 col-sm-4 col-6 mb-3">
+                <a href="{{ route('products.category', $category->slug) }}" class="text-decoration-none">
+                    <div class="card category-card text-center">
+                        <div class="card-body">
+                            <img src="{{ $category->image ?? 'https://via.placeholder.com/100' }}" alt="{{ $category->name }}" class="img-fluid mb-2" style="height: 80px;">
+                            <h6 class="card-title">{{ $category->name }}</h6>
                         </div>
-                    </a>
-                </div>
+                    </div>
+                </a>
+            </div>
             @endforeach
         </div>
     </div>
@@ -46,26 +46,26 @@
         <h2 class="text-center mb-4">Featured Products</h2>
         <div class="row">
             @foreach($featuredProducts as $product)
-                <div class="col-md-3 col-sm-6 mb-4">
-                    <div class="card product-card">
-                        <img src="{{ $product->image ?? 'https://via.placeholder.com/300x200' }}" class="card-img-top product-image" alt="{{ $product->name }}">
-                        <div class="card-body">
-                            <h5 class="card-title">{{ Str::limit($product->name, 20) }}</h5>
-                            <p class="card-text text-muted">{{ Str::limit($product->description, 50) }}</p>
-                            <div class="d-flex justify-content-between align-items-center">
-                                <div>
-                                    @if($product->discount_price)
-                                        <span class="text-decoration-line-through text-muted">${{ $product->price }}</span>
-                                        <span class="h5 text-danger">${{ $product->discount_price }}</span>
-                                    @else
-                                        <span class="h5">${{ $product->price }}</span>
-                                    @endif
-                                </div>
-                                <a href="{{ route('products.show', $product->slug) }}" class="btn btn-primary btn-sm">View</a>
+            <div class="col-md-3 col-sm-6 mb-4">
+                <div class="card product-card">
+                    <img src="{{ $product->image ?? 'https://via.placeholder.com/300x200' }}" class="card-img-top product-image" alt="{{ $product->name }}">
+                    <div class="card-body">
+                        <h5 class="card-title">{{ Str::limit($product->name, 20) }}</h5>
+                        <p class="card-text text-muted">{{ Str::limit($product->description, 50) }}</p>
+                        <div class="d-flex justify-content-between align-items-center">
+                            <div>
+                                @if($product->discount_price)
+                                <span class="text-decoration-line-through text-muted">${{ $product->price }}</span>
+                                <span class="h5 text-danger">${{ $product->discount_price }}</span>
+                                @else
+                                <span class="h5">${{ $product->price }}</span>
+                                @endif
                             </div>
+                            <a href="{{ route('products.show', $product->slug) }}" class="btn btn-primary btn-sm">View</a>
                         </div>
                     </div>
                 </div>
+            </div>
             @endforeach
         </div>
         <div class="text-center mt-4">
