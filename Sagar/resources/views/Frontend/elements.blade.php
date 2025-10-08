@@ -285,42 +285,42 @@
 			<div class="row gallery-item">
 				<div class="col-md-4">
 					<a href="{{url('frontend/img/elements/g1.jpg')}}" class="img-gal">
-						<div class="single-gallery-image" style="background: url({{url('frontend/img/elements/g1.jpg')}});"></div>
+						<div class="single-gallery-image" style="background: url(img/elements/g1.jpg);"></div>
 					</a>
 				</div>
 				<div class="col-md-4">
 					<a href="{{url('frontend/imgelements/g2.jpg')}}" class="img-gal">
-						<div class="single-gallery-image" style="background: url({{url('frontend/img/elements/g2.jpg')}});"></div>
+						<div class="single-gallery-image" style="background: url(img/elements/g2.jpg);"></div>
 					</a>
 				</div>
 				<div class="col-md-4">
 					<a href="{{url('frontend/imgelements/g3.jpg')}}" class="img-gal">
-						<div class="single-gallery-image" style="background: url({{url('frontend/img/elements/g3.jpg')}});"></div>
+						<div class="single-gallery-image" style="background: url(img/elements/g3.jpg);"></div>
 					</a>
 				</div>
 				<div class="col-md-6">
 					<a href="{{url('frontend/imgelements/g4.jpg')}}" class="img-gal">
-						<div class="single-gallery-image" style="background: url({{url('frontend/img/elements/g4.jpg')}});"></div>
+						<div class="single-gallery-image" style="background: url(img/elements/g4.jpg);"></div>
 					</a>
 				</div>
 				<div class="col-md-6">
 					<a href="{{url('frontend/imgelements/g5.jpg')}}" class="img-gal">
-						<div class="single-gallery-image" style="background: url({{url('frontend/img/elements/g5.jpg')}});"></div>
+						<div class="single-gallery-image" style="background: url(img/elements/g5.jpg);"></div>
 					</a>
 				</div>
 				<div class="col-md-4">
 					<a href="{{url('frontend/imgelements/g6.jpg')}}" class="img-gal">
-						<div class="single-gallery-image" style="background: url({{url('frontend/img/elements/g6.jpg')}});"></div>
+						<div class="single-gallery-image" style="background: url(img/elements/g6.jpg);"></div>
 					</a>
 				</div>
 				<div class="col-md-4">
 					<a href="{{url('frontend/imgelements/g7.jpg')}}" class="img-gal">
-						<div class="single-gallery-image" style="background: url({{url('frontend/img/elements/g7.jpg')}});"></div>
+						<div class="single-gallery-image" style="background: url(img/elements/g7.jpg);"></div>
 					</a>
 				</div>
 				<div class="col-md-4">
 					<a href="{{url('frontend/imgelements/g8.jpg')}}" class="img-gal">
-						<div class="single-gallery-image" style="background: url({{url('frontend/img/elements/g8.jpg')}});"></div>
+						<div class="single-gallery-image" style="background: url(img/elements/g8.jpg);"></div>
 					</a>
 				</div>
 			</div>
