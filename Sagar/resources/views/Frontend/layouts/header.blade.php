@@ -1,4 +1,3 @@
-
 <!doctype html>
 <html lang="en">
 
@@ -7,7 +6,7 @@
 	<meta charset="utf-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 	<link rel="icon" href="{{url('frontend/img/favicon.png')}}" type="image/png">
-	<title>Satner Portfolio</title>
+	<title>{{ $title ?? 'Default Title' }}</title>
 	<!-- Bootstrap CSS -->
 	<link rel="stylesheet" href="{{url('frontend/css/bootstrap.css')}}">
 	<link rel="stylesheet" href="{{url('frontend/vendors/linericon/style.css')}}">
@@ -29,7 +28,7 @@
 					<!-- Brand and toggle get grouped for better mobile display -->
 					<a class="navbar-brand logo_h" href="index.html"><img src="{{url('frontend/img/logo.png')}}" alt=""></a>
 					<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
-					 aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+						aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
 						<span class="icon-bar"></span>
 						<span class="icon-bar"></span>
 						<span class="icon-bar"></span>
@@ -43,15 +42,15 @@
 							<li class="nav-item"><a class="nav-link" href="{{url('/port')}}">Portfolio</a></li>
 							<li class="nav-item submenu dropdown">
 								<a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true"
-								 aria-expanded="false">Pages</a>
+									aria-expanded="false">Pages</a>
 								<ul class="dropdown-menu">
-									<li class="nav-item"><a class="nav-link" href="elements.html">Elements</a></li>
+									<li class="nav-item"><a class="nav-link" href="{{url('/elements')}}">Elements</a></li>
 									<li class="nav-item"><a class="nav-link" href="{{url('/about')}}">Portfolio Details</a></li>
 								</ul>
 							</li>
 							<li class="nav-item submenu dropdown">
 								<a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true"
-								 aria-expanded="false">Blog</a>
+									aria-expanded="false">Blog</a>
 								<ul class="dropdown-menu">
 									<li class="nav-item"><a class="nav-link" href="blog.html">Blog</a></li>
 									<li class="nav-item"><a class="nav-link" href="{{url('/about')}}">Blog Details</a></li>

@@ -1,6 +1,8 @@
 @extends('Frontend.layouts.main')
+@section('title', 'Home Page')
 
 @section('main-container')
+
 	<!--================ Start Home Banner Area =================-->
 	<section class="home_banner_area">
 		<div class="banner_inner">
