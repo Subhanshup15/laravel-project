@@ -314,9 +314,9 @@
 					<div class="col-lg-4 col-md-6 all upcoming">
 						<div class="portfolio_box">
 							<div class="single_portfolio">
-								<img class="img-fluid w-100" src="{{url('frontend/img/portfolio/p5.jpg" alt="">
+								<img class="img-fluid w-100" src="{{url('frontend/img/portfolio/p5.jpg')}}" alt="">
 								<div class="overlay"></div>
-								<a href="{{url('frontend/img/portfolio/p6.jpg" class="img-gal">
+								<a href="{{url('frontend/img/portfolio/p6.jpg')}}" class="img-gal">
 									<div class="icon">
 										<span class="lnr lnr-cross"></span>
 									</div>
@@ -331,9 +331,9 @@
 					<div class="col-lg-4 col-md-6 all upcoming following">
 						<div class="portfolio_box">
 							<div class="single_portfolio">
-								<img class="img-fluid w-100" src="img/portfolio/p7.jpg" alt="">
+								<img class="img-fluid w-100" src="{{url('frontend/img/portfolio/p7.jpg')}}" alt="">
 								<div class="overlay"></div>
-								<a href="img/portfolio/p7.jpg" class="img-gal">
+								<a href="{{url('frontend/img/portfolio/p7.jpg')}}" class="img-gal">
 									<div class="icon">
 										<span class="lnr lnr-cross"></span>
 									</div>
@@ -348,9 +348,9 @@
 					<div class="col-lg-4 col-md-6 all following">
 						<div class="portfolio_box">
 							<div class="single_portfolio">
-								<img class="img-fluid w-100" src="img/portfolio/p8.jpg" alt="">
+								<img class="img-fluid w-100" src="{{url('frontend/img/portfolio/p8.jpg')}}" alt="">
 								<div class="overlay"></div>
-								<a href="img/portfolio/p8.jpg" class="img-gal">
+								<a href="{{url('frontend/img/portfolio/p8.jpg')}}" class="img-gal">
 									<div class="icon">
 										<span class="lnr lnr-cross"></span>
 									</div>
@@ -365,9 +365,9 @@
 					<div class="col-lg-4 col-md-6 all upcoming">
 						<div class="portfolio_box">
 							<div class="single_portfolio">
-								<img class="img-fluid w-100" src="img/portfolio/p9.jpg" alt="">
+								<img class="img-fluid w-100" src="{{url('frontend/img/portfolio/p9.jpg')}}" alt="">
 								<div class="overlay"></div>
-								<a href="img/portfolio/p9.jpg" class="img-gal">
+								<a href="{{url('frontend/img/portfolio/p9.jpg')}}" class="img-gal">
 									<div class="icon">
 										<span class="lnr lnr-cross"></span>
 									</div>
@@ -402,7 +402,7 @@
         			<div class="testi_item">
         				<div class="row">
         					<div class="col-lg-4">
-        						<img src="img/testimonials/t1.jpg" alt="">
+        						<img src="{{url('frontend/img/testimonials/t1.jpg')}}" alt="">
         					</div>
         					<div class="col-lg-8">
         						<div class="testi_text">
@@ -415,7 +415,7 @@
         			<div class="testi_item">
         				<div class="row">
         					<div class="col-lg-4">
-        						<img src="img/testimonials/t2.jpg" alt="">
+        						<img src="{{url('frontend/img/testimonials/t2.jpg')}}" alt="">
         					</div>
         					<div class="col-lg-8">
         						<div class="testi_text">
@@ -428,7 +428,7 @@
         			<div class="testi_item">
         				<div class="row">
         					<div class="col-lg-4">
-        						<img src="img/testimonials/t1.jpg" alt="">
+        						<img src="{{url('frontend/img/testimonials/t1.jpg')}}" alt="">
         					</div>
         					<div class="col-lg-8">
         						<div class="testi_text">
@@ -441,7 +441,7 @@
         			<div class="testi_item">
         				<div class="row">
         					<div class="col-lg-4">
-        						<img src="img/testimonials/t2.jpg" alt="">
+        						<img src="{{url('frontend/img/testimonials/t2.jpg')}}" alt="">
         					</div>
         					<div class="col-lg-8">
         						<div class="testi_text">
@@ -454,7 +454,7 @@
         			<div class="testi_item">
         				<div class="row">
         					<div class="col-lg-4">
-        						<img src="img/testimonials/t1.jpg" alt="">
+        						<img src="{{url('frontend/img/testimonials/t1.jpg')}}" alt="">
         					</div>
         					<div class="col-lg-8">
         						<div class="testi_text">
@@ -467,7 +467,7 @@
         			<div class="testi_item">
         				<div class="row">
         					<div class="col-lg-4">
-        						<img src="img/testimonials/t2.jpg" alt="">
+        						<img src="{{url('frontend/img/testimonials/t2.jpg')}}" alt="">
         					</div>
         					<div class="col-lg-8">
         						<div class="testi_text">

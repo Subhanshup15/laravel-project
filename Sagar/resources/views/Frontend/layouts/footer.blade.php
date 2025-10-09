@@ -46,7 +46,6 @@
 <script src="{{url('frontend/js/jquery.ajaxchimp.min.js')}}"></script>
 <script src="{{url('frontend/js/mail-script.js')}}"></script>
 <!--gmaps Js-->
-<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCjCGmQ0Uq4exrzdcL6rvxywDDOvfAu6eE"></script>
 <script src="{{url('frontend/js/gmaps.min.js')}}"></script>
 <script src="{{url('frontend/js/theme.js')}}"></script>
 </body>
