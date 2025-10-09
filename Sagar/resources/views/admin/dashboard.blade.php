@@ -18,7 +18,7 @@
 
 <body id="page-top">
     <div id="wrapper">
-        @include('layouts.admin-section.sidebar')
+        @include('admin.admin-section.sidebar')
 
         <!-- Content Wrapper -->
         <div id="content-wrapper" class="d-flex flex-column">
@@ -26,7 +26,7 @@
             <!-- Main Content -->
             <div id="content">
 
-                @include('layouts.admin-section.navbar')
+                @include('admin.admin-section.navbar')
 
                 <!-- Begin Page Content -->
                 <div class="container-fluid">
@@ -363,7 +363,7 @@
             </div>
             <!-- End of Main Content -->
 
-            @include('layouts.admin-section.footer')
+            @include('admin.admin-section.footer')
         </div>
         <!-- End of Content Wrapper -->
 

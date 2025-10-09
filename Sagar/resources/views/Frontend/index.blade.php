@@ -14,17 +14,27 @@
 
 						@foreach($about as $item)
 						<div class="banner_content">
-							<h3 class="text-uppercase">Hell0</h3>
+							<h3 class="text-uppercase">Hello</h3>
 							<h2 class="text-uppercase">{{ $item->name }}</h2>
 							<h4 class="text-uppercase">{{ $item->designation }}</h4>
 							<h6 class="text-uppercase">{{ $item->about_myself }}</h6>
 
-							<div class="d-flex align-items-center">
-								<a class="primary_btn" href="#"><span>Hire Me</span></a>
-								<a class="primary_btn tr-bg" href="#"><span>Get CV</span></a>
+							<div class="d-flex align-items-center mt-3">
+								<!-- <a class="primary_btn" href="#"><span>Hire Me</span></a> -->
+
+								@if($item->pdf)
+								<a href="{{ asset('storage/'.$item->pdf) }}" target="_blank" class="primary_btn tr-bg ml-2">
+									<span>Get CV</span>
+								</a>
+								@else
+								<a class="primary_btn tr-bg ml-2 disabled" href="#">
+									<span>CV Not Available</span>
+								</a>
+								@endif
 							</div>
 						</div>
 						@endforeach
+
 					</div>
 				</div>
 				<div class="col-lg-5">
@@ -233,168 +243,37 @@
 		<div class="filters portfolio-filter">
 			<ul>
 				<li class="active" data-filter="*">all</li>
-				<li data-filter=".popular">popular</li>
+				<!-- <li data-filter=".popular">popular</li>
 				<li data-filter=".latest"> latest</li>
 				<li data-filter=".following">following</li>
-				<li data-filter=".upcoming">upcoming</li>
+				<li data-filter=".upcoming">upcoming</li> -->
 			</ul>
 		</div>
 
 		<div class="filters-content">
 			<div class="row portfolio-grid justify-content-center">
+				@foreach($project as $item)
 				<div class="col-lg-4 col-md-6 all latest">
 					<div class="portfolio_box">
 						<div class="single_portfolio">
-							<img class="img-fluid w-100" src="{{url('frontend/img/portfolio/p1.jpg')}}" alt="">
+							<img class="img-fluid w-100"
+								src="{{ $item->image ? asset('storage/' . $item->image) : url('frontend/img/portfolio/p1.jpg') }}"
+								alt="{{ $item->title }}">
 							<div class="overlay"></div>
-							<a href="{{url('frontend/img/portfolio/p1.jpg')}}" class="img-gal">
+							<a href="{{ $item->image ? asset('storage/' . $item->image) : url('frontend/img/portfolio/p1.jpg') }}" target="_blank" class="img-gal">
 								<div class="icon">
 									<span class="lnr lnr-cross"></span>
 								</div>
 							</a>
 						</div>
 						<div class="short_info">
-							<h4><a href="portfolio-details.html">minimal design</a></h4>
-							<p>Animated, portfolio</p>
+							<h4><a href="#" target="_blank">{{ $item->title }}</a></h4>
+							<p>{{ $item->description }}</p>
 						</div>
 					</div>
 				</div>
-				<div class="col-lg-4 col-md-6 all popular">
-					<div class="portfolio_box">
-						<div class="single_portfolio">
-							<img class="img-fluid w-100" src="{{url('frontend/img/portfolio/p2.jpg')}}" alt="">
-							<div class="overlay"></div>
-							<a href="img/portfolio/p2.jpg" class="img-gal">
-								<div class="icon">
-									<span class="lnr lnr-cross"></span>
-								</div>
-							</a>
-						</div>
-						<div class="short_info">
-							<h4><a href="portfolio-details.html">Paint wall</a></h4>
-							<p>Animated, portfolio</p>
-						</div>
-					</div>
-				</div>
-				<div class="col-lg-4 col-md-6 all latest">
-					<div class="portfolio_box">
-						<div class="single_portfolio">
-							<img class="img-fluid w-100" src="{{url('frontend/img/portfolio/p3.jpg')}}" alt="">
-							<div class="overlay"></div>
-							<a href="{{url('frontend/img/portfolio/p3.jpg')}}" class="img-gal">
-								<div class="icon">
-									<span class="lnr lnr-cross"></span>
-								</div>
-							</a>
-						</div>
-						<div class="short_info">
-							<h4><a href="portfolio-details.html">female light</a></h4>
-							<p>Animated, portfolio</p>
-						</div>
-					</div>
-				</div>
-				<div class="col-lg-4 col-md-6 all popular">
-					<div class="portfolio_box">
-						<div class="single_portfolio">
-							<img class="img-fluid w-100" src="{{url('frontend/img/portfolio/p4.jpg')}}" alt="">
-							<div class="overlay"></div>
-							<a href="{{url('frontend/img/portfolio/p4.jpg')}}" class="img-gal">
-								<div class="icon">
-									<span class="lnr lnr-cross"></span>
-								</div>
-							</a>
-						</div>
-						<div class="short_info">
-							<h4><a href="portfolio-details.html">fourth air</a></h4>
-							<p>Animated, portfolio</p>
-						</div>
-					</div>
-				</div>
-				<div class="col-lg-4 col-md-6 all following">
-					<div class="portfolio_box">
-						<div class="single_portfolio">
-							<img class="img-fluid w-100" src="{{url('frontend/img/portfolio/p6.jpg')}}" alt="">
-							<div class="overlay"></div>
-							<a href="{{url('frontend/img/portfolio/p5.jpg')}}" class="img-gal">
-								<div class="icon">
-									<span class="lnr lnr-cross"></span>
-								</div>
-							</a>
-						</div>
-						<div class="short_info">
-							<h4><a href="portfolio-details.html">together sign</a></h4>
-							<p>Animated, portfolio</p>
-						</div>
-					</div>
-				</div>
-				<div class="col-lg-4 col-md-6 all upcoming">
-					<div class="portfolio_box">
-						<div class="single_portfolio">
-							<img class="img-fluid w-100" src="{{url('frontend/img/portfolio/p5.jpg')}}" alt="">
-							<div class="overlay"></div>
-							<a href="{{url('frontend/img/portfolio/p6.jpg')}}" class="img-gal">
-								<div class="icon">
-									<span class="lnr lnr-cross"></span>
-								</div>
-							</a>
-						</div>
-						<div class="short_info">
-							<h4><a href="portfolio-details.html">multiply fowl</a></h4>
-							<p>Animated, portfolio</p>
-						</div>
-					</div>
-				</div>
-				<div class="col-lg-4 col-md-6 all upcoming following">
-					<div class="portfolio_box">
-						<div class="single_portfolio">
-							<img class="img-fluid w-100" src="{{url('frontend/img/portfolio/p7.jpg')}}" alt="">
-							<div class="overlay"></div>
-							<a href="{{url('frontend/img/portfolio/p7.jpg')}}" class="img-gal">
-								<div class="icon">
-									<span class="lnr lnr-cross"></span>
-								</div>
-							</a>
-						</div>
-						<div class="short_info">
-							<h4><a href="portfolio-details.html">green heaven</a></h4>
-							<p>Animated, portfolio</p>
-						</div>
-					</div>
-				</div>
-				<div class="col-lg-4 col-md-6 all following">
-					<div class="portfolio_box">
-						<div class="single_portfolio">
-							<img class="img-fluid w-100" src="{{url('frontend/img/portfolio/p8.jpg')}}" alt="">
-							<div class="overlay"></div>
-							<a href="{{url('frontend/img/portfolio/p8.jpg')}}" class="img-gal">
-								<div class="icon">
-									<span class="lnr lnr-cross"></span>
-								</div>
-							</a>
-						</div>
-						<div class="short_info">
-							<h4>fly male</h4>
-							<p>Animated, portfolio</p>
-						</div>
-					</div>
-				</div>
-				<div class="col-lg-4 col-md-6 all upcoming">
-					<div class="portfolio_box">
-						<div class="single_portfolio">
-							<img class="img-fluid w-100" src="{{url('frontend/img/portfolio/p9.jpg')}}" alt="">
-							<div class="overlay"></div>
-							<a href="{{url('frontend/img/portfolio/p9.jpg')}}" class="img-gal">
-								<div class="icon">
-									<span class="lnr lnr-cross"></span>
-								</div>
-							</a>
-						</div>
-						<div class="short_info">
-							<h4><a href="portfolio-details.html">season face</a></h4>
-							<p>Animated, portfolio</p>
-						</div>
-					</div>
-				</div>
+				@endforeach
+
 			</div>
 		</div>
 	</div>

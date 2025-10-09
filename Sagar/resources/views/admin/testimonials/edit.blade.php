@@ -1,9 +1,9 @@
-@include('admin.admin-section.header')
-@include('admin.admin-section.sidebar')
+@include('layouts.admin-section.header')
+@include('layouts.admin-section.sidebar')
 
 <div id="content-wrapper" class="d-flex flex-column">
     <div id="content">
-        @include('admin.admin-section.navbar')
+        @include('layouts.admin-section.navbar')
 
         <div class="container-fluid">
             <!-- Page Heading -->
@@ -77,5 +77,5 @@
         </div>
 
     </div>
-    @include('admin.admin-section.footer')
+    @include('layouts.admin-section.footer')
 </div>

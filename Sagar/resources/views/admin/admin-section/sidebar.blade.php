@@ -39,8 +39,9 @@
                  <h6 class="collapse-header">Home</h6>
                  <a class="collapse-item" href="{{url('admin/home')}}">infromation</a>
                  <a class="collapse-item" href="{{url('admin/abouts')}}">About</a>
-                 <a class="collapse-item" href="{{url('admin/service')}}">Service</a>
+                 <a class="collapse-item" href="{{url('admin/services')}}">Service</a>
                  <a class="collapse-item" href="{{url('admin/portfolio')}}">portfolio</a>
+                   <a class="collapse-item" href="{{url('admin/projects')}}">Project</a>
              </div>
          </div>
          <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
