@@ -16,8 +16,10 @@ return new class extends Migration
             $table->string('name');
             $table->string('designation');
             $table->text('about_myself');
+            $table->text('about');
             $table->integer('experience')->nullable();
             $table->string('phone')->nullable();
+            $table->string('pdf')->nullable(); // <-- Added PDF column
             $table->timestamps();
         });
     }

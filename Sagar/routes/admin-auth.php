@@ -24,24 +24,13 @@
 
         Route::get('/dashboard', function () {
             return view('admin.dashboard');
-        })->name('admin.dashboard');
+        })->name('dashboard');
 
-        // Route::get('/home', function () {
-        //     return view('admin.home');
-        // })->name('admin.home');
+         Route::get('/home', function () {
+            return view('admin.home');
+        })->name('home');
 
-        // Route::get('/about', function () {
-        //     return view('admin.about');
-        // })->name('admin.about');
-
-        //  Route::get('/service', function () {
-        //     return view('admin.service');
-        // })->name('admin.service');
-
-        //  Route::get('/portfolio', function () {
-        //     return view('admin.portfolio');
-        // })->name('admin.portfolio');
-  
+       
          // About CRUD
     Route::resource('abouts', AboutController::class);
 

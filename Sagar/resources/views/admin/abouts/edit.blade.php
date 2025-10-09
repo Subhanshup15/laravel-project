@@ -28,13 +28,13 @@
 
                                 <div class="form-group mb-3">
                                     <label for="name">Name</label>
-                                    <input type="text" class="form-control" id="name" name="name" 
+                                    <input type="text" class="form-control" id="name" name="name"
                                         value="{{ old('name', $about->name) }}" required>
                                 </div>
 
                                 <div class="form-group mb-3">
                                     <label for="designation">Designation</label>
-                                    <input type="text" class="form-control" id="designation" name="designation" 
+                                    <input type="text" class="form-control" id="designation" name="designation"
                                         value="{{ old('designation', $about->designation) }}" required>
                                 </div>
 
@@ -44,16 +44,29 @@
                                 </div>
 
                                 <div class="form-group mb-3">
+                                    <label for="about">About Myself</label>
+                                    <textarea class="form-control" id="about" name="about" rows="4" required>{{ old('about', $about->about) }}</textarea>
+                                </div>
+
+                                <div class="form-group mb-3">
                                     <label for="experience">Experience (Years)</label>
-                                    <input type="number" class="form-control" id="experience" name="experience" 
+                                    <input type="number" class="form-control" id="experience" name="experience"
                                         value="{{ old('experience', $about->experience) }}">
                                 </div>
 
                                 <div class="form-group mb-3">
                                     <label for="phone">Phone</label>
-                                    <input type="text" class="form-control" id="phone" name="phone" 
+                                    <input type="text" class="form-control" id="phone" name="phone"
                                         value="{{ old('phone', $about->phone) }}">
                                 </div>
+                                <div class="form-group mb-3">
+                                    <label for="pdf">PDF</label>
+                                    @if($about->pdf)
+                                    <p>Current PDF: <a href="{{ asset('storage/' . $about->pdf) }}" target="_blank">View</a></p>
+                                    @endif
+                                    <input type="file" class="form-control" id="pdf" name="pdf">
+                                </div>
+
 
                                 <button type="submit" class="btn btn-primary">Update</button>
                             </form>

@@ -14,7 +14,9 @@ class About extends Model
         'name',
         'designation',
         'about_myself',
+        'about',
         'experience',
         'phone',
+        "pdf",
     ];
 }

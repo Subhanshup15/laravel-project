@@ -30,23 +30,31 @@ class AboutController extends Controller
      */
     public function store(Request $request)
     {
-        // Validate input
         $request->validate([
             'name' => 'required|string|max:255',
             'designation' => 'required|string|max:255',
             'about_myself' => 'required|string',
+            'about' => 'required|string',
             'experience' => 'nullable|integer',
             'phone' => 'nullable|string|max:20',
+            'pdf' => 'nullable|mimes:pdf|max:2048',
         ]);
 
-        // Create About safely
-        About::create($request->only([
-            'name',
-            'designation',
-            'about_myself',
-            'experience',
-            'phone'
-        ]));
+        $about = new About();
+        $about->name = $request->name;
+        $about->designation = $request->designation;
+        $about->about_myself = $request->about_myself;
+        $about->about = $request->about;
+        $about->experience = $request->experience;
+        $about->phone = $request->phone;
+
+        if ($request->hasFile('pdf')) {
+            $fileName = time() . '_' . $request->pdf->getClientOriginalName();
+            $filePath = $request->file('pdf')->storeAs('pdfs', $fileName, 'public');
+            $about->pdf = $filePath;
+        }
+
+        $about->save();
 
         return redirect()->route('admin.abouts.index')->with('success', 'About created successfully!');
     }
@@ -64,23 +72,34 @@ class AboutController extends Controller
      */
     public function update(Request $request, About $about)
     {
-        // Validate input
         $request->validate([
             'name' => 'required|string|max:255',
             'designation' => 'required|string|max:255',
             'about_myself' => 'required|string',
+            'about' => 'required|string',
             'experience' => 'nullable|integer',
             'phone' => 'nullable|string|max:20',
+            'pdf' => 'nullable|mimes:pdf|max:2048',
         ]);
 
-        // Update About safely
-        $about->update($request->only([
-            'name',
-            'designation',
-            'about_myself',
-            'experience',
-            'phone'
-        ]));
+        $about->name = $request->name;
+        $about->designation = $request->designation;
+        $about->about_myself = $request->about_myself;
+        $about->about = $request->about;
+        $about->experience = $request->experience;
+        $about->phone = $request->phone;
+
+        if ($request->hasFile('pdf')) {
+            // Delete old PDF
+            if ($about->pdf && file_exists(storage_path('app/public/' . $about->pdf))) {
+                unlink(storage_path('app/public/' . $about->pdf));
+            }
+            $fileName = time() . '_' . $request->pdf->getClientOriginalName();
+            $filePath = $request->file('pdf')->storeAs('pdfs', $fileName, 'public');
+            $about->pdf = $filePath;
+        }
+
+        $about->save();
 
         return redirect()->route('admin.abouts.index')->with('success', 'About updated successfully!');
     }
@@ -90,7 +109,12 @@ class AboutController extends Controller
      */
     public function destroy(About $about)
     {
+        if ($about->pdf && file_exists(storage_path('app/public/' . $about->pdf))) {
+            unlink(storage_path('app/public/' . $about->pdf));
+        }
+
         $about->delete();
-        return redirect()->route('admin.abouts.index')->with('success', 'About deleted successfully!');
+
+        return redirect()->back()->with('success', 'About deleted successfully!');
     }
 }
