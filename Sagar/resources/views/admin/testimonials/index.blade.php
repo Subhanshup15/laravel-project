@@ -1,10 +1,10 @@
-      @include('layouts.admin-section.header')
+      @include('admin.admin-section.header')
 
-        @include('layouts.admin-section.sidebar')
+        @include('admin.admin-section.sidebar')
         <div id="content-wrapper" class="d-flex flex-column">
 
             <div id="content">
-                @include('layouts.admin-section.navbar')
+                @include('admin.admin-section.navbar')
                 <div class="container-fluid">
                     @yield('content')
                     <div class="container-fluid">
@@ -130,7 +130,7 @@
 </div>
                 </div>
             </div>
-            @include('layouts.admin-section.footer')
+            @include('admin.admin-section.footer')
         </div>
     </div>
 

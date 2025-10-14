@@ -9,7 +9,7 @@
             <!-- Page Heading -->
             <div class="d-sm-flex align-items-center justify-content-between mb-4">
                 <h1 class="h3 mb-0 text-gray-800">Edit Project</h1>
-                <a href="{{ route('admin.projects.index') }}" class="btn btn-secondary btn-sm">Back to List</a>
+                <a href="{{ route('admin.language.index') }}" class="btn btn-secondary btn-sm">Back to List</a>
             </div>
 
             <div class="row">
@@ -22,41 +22,37 @@
 
                         <!-- Card Body -->
                         <div class="card-body">
-                            <form action="{{ route('admin.projects.update', $project->id) }}" method="POST" enctype="multipart/form-data">
+                            <form action="{{ route('admin.language.update', $language->id) }}" method="POST" enctype="multipart/form-data">
                                 @csrf
                                 @method('PUT')
 
                                 <!-- Project Title -->
                                 <div class="form-group mb-3">
-                                    <label for="title">Project Title</label>
+                                    <label for="title">language Name</label>
                                     <input type="text" class="form-control" id="title" name="title"
-                                        value="{{ old('title', $project->title) }}" placeholder="Enter project title" required>
+                                        value="{{ old('title', $language->title) }}" placeholder="Enter language title" required>
                                 </div>
 
                                 <!-- Project Image -->
                                 <div class="form-group mb-3">
                                     <label for="image">Project Image</label>
-                                    @if($project->image)
-                                        <p>Current Image:</p>
-                                        <img src="{{ asset('storage/' . $project->image) }}" alt="Project Image" width="120" height="80" style="object-fit: cover; border-radius: 8px;">
+                                    @if($language->image)
+                                    <p>Current Image:</p>
+                                    <img src="{{ asset('storage/' . $language->image) }}" alt="language Image" width="120" height="80" style="object-fit: cover; border-radius: 8px;">
                                     @endif
                                     <input type="file" class="form-control mt-2" id="image" name="image">
                                 </div>
 
                                 <!-- Project URL -->
-                                <div class="form-group mb-3">
-                                    <label for="url">Project URL</label>
-                                    <input type="url" class="form-control" id="url" name="url"
-                                        value="{{ old('url', $project->url) }}" placeholder="https://example.com" required>
-                                </div>
+
 
                                 <!-- Project Description -->
                                 <div class="form-group mb-3">
                                     <label for="description">Description</label>
-                                    <textarea class="form-control" id="description" name="description" rows="4" placeholder="Enter project description" required>{{ old('description', $project->description) }}</textarea>
+                                    <textarea class="form-control" id="description" name="description" rows="4" placeholder="Enter project description" required>{{ old('description', $language->description) }}</textarea>
                                 </div>
 
-                                <button type="submit" class="btn btn-primary">Update Project</button>
+                                <button type="submit" class="btn btn-primary">Update language</button>
                             </form>
                         </div>
                     </div>

@@ -42,6 +42,7 @@
                  <a class="collapse-item" href="{{url('admin/services')}}">Service</a>
                  <a class="collapse-item" href="{{url('admin/portfolio')}}">portfolio</a>
                    <a class="collapse-item" href="{{url('admin/projects')}}">Project</a>
+                    <a class="collapse-item" href="{{url('admin/language')}}">language</a>
              </div>
          </div>
          <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">

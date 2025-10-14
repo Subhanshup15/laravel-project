@@ -8,6 +8,7 @@
     use App\Http\Controllers\Admin\ProjectController;
     use App\Http\Controllers\Admin\ServiceController;
     use App\Http\Controllers\Admin\TestimonialController;
+    use App\Http\Controllers\Admin\CodeLanguagesController;
 
 
     use Illuminate\Support\Facades\Route;
@@ -26,30 +27,30 @@
             return view('admin.dashboard');
         })->name('dashboard');
 
-         Route::get('/home', function () {
+        Route::get('/home', function () {
             return view('admin.home');
         })->name('home');
 
-       
-         // About CRUD
-    Route::resource('abouts', AboutController::class);
 
-    // Services CRUD
-    Route::resource('services', ServiceController::class);
+        // About CRUD
+        Route::resource('abouts', AboutController::class);
 
-    // Projects CRUD
-    Route::resource('projects', ProjectController::class);
+        // Services CRUD
+        Route::resource('services', ServiceController::class);
 
-    // Testimonials CRUD
-    Route::resource('testimonials', TestimonialController::class);
+        // Projects CRUD
+        Route::resource('projects', ProjectController::class);
 
-    // Newsletter CRUD
-    Route::resource('newsletters', NewsletterController::class);
+        // Testimonials CRUD
+        Route::resource('testimonials', TestimonialController::class);
+
+        // Newsletter CRUD
+        Route::resource('newsletters', NewsletterController::class);
+        // Language CRUD
+        Route::resource('language', CodeLanguagesController::class);
 
 
         // about
 
         Route::post('logout', [Adminlogin::class, 'destroy'])->name('logout');
     });
-
-
