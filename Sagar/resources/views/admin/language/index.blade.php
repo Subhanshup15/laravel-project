@@ -76,9 +76,9 @@
                                     <thead>
                                         <tr>
                                             <th>ID</th>
-                                            <th>Title</th>
+                                            <th>Name</th>
                                             <th>Image</th>
-                                            <th>URL</th>
+                                           
                                             <th>Description</th>
                                             <th>Actions</th>
                                         </tr>
@@ -87,13 +87,13 @@
                                         @foreach($languages as $project)
                                         <tr>
                                             <td>{{ $project->id }}</td>
-                                            <td>{{ $project->title }}</td>
+                                            <td>{{ $project->name }}</td>
                                             <td>
                                                 @if($project->image)
                                                 <img src="{{ asset('storage/'.$project->image) }}" width="60" height="60" style="object-fit: cover;" alt="">
                                                 @endif
                                             </td>
-                                            <td><a href="{{ $project->url }}" target="_blank">{{ $project->url }}</a></td>
+                                           
                                             <td>{{ Str::limit($project->description, 50) }}</td>
                                             <td>
                                                 <a href="{{ route('admin.language.edit', $project->id) }}" class="btn btn-warning btn-sm">Edit</a>

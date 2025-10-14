@@ -72,14 +72,13 @@ class CodeLanguagesController extends Controller
     public function update(Request $request, string $id)
     {
          $request->validate([
-            'title' => 'required|string|max:255',
-            'url' => 'required|url',
+            'name' => 'required|string|max:255',
             'description' => 'required|string',
             'image' => 'nullable|image|mimes:jpg,jpeg,png|max:2048',
         ]);
 
         $language = Language::findOrFail($id);
-        $data = $request->only(['title', 'url', 'description']);
+        $data = $request->only(['name','description']);
 
         // Update image if new one is uploaded
         if ($request->hasFile('image')) {

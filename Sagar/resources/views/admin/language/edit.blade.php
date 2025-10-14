@@ -8,7 +8,7 @@
         <div class="container-fluid">
             <!-- Page Heading -->
             <div class="d-sm-flex align-items-center justify-content-between mb-4">
-                <h1 class="h3 mb-0 text-gray-800">Edit Project</h1>
+                <h1 class="h3 mb-0 text-gray-800">Edit Language</h1>
                 <a href="{{ route('admin.language.index') }}" class="btn btn-secondary btn-sm">Back to List</a>
             </div>
 
@@ -17,7 +17,7 @@
                     <div class="card shadow mb-4">
                         <!-- Card Header -->
                         <div class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
-                            <h6 class="m-0 font-weight-bold text-primary">Update Project</h6>
+                            <h6 class="m-0 font-weight-bold text-primary">Update Language</h6>
                         </div>
 
                         <!-- Card Body -->
@@ -26,33 +26,59 @@
                                 @csrf
                                 @method('PUT')
 
-                                <!-- Project Title -->
+                                <!-- Language Name -->
                                 <div class="form-group mb-3">
-                                    <label for="title">language Name</label>
-                                    <input type="text" class="form-control" id="title" name="title"
-                                        value="{{ old('title', $language->title) }}" placeholder="Enter language title" required>
+                                    <label for="name">Language Name</label>
+                                    <input 
+                                        type="text" 
+                                        class="form-control @error('name') is-invalid @enderror" 
+                                        id="name" 
+                                        name="name"
+                                        value="{{ old('name', $language->name) }}" 
+                                        placeholder="Enter language name" 
+                                        required
+                                    >
+                                    @error('name')
+                                        <span class="invalid-feedback">{{ $message }}</span>
+                                    @enderror
                                 </div>
 
-                                <!-- Project Image -->
+                                <!-- Language Image -->
                                 <div class="form-group mb-3">
-                                    <label for="image">Project Image</label>
+                                    <label for="image">Language Image</label>
                                     @if($language->image)
-                                    <p>Current Image:</p>
-                                    <img src="{{ asset('storage/' . $language->image) }}" alt="language Image" width="120" height="80" style="object-fit: cover; border-radius: 8px;">
+                                        <p>Current Image:</p>
+                                        <img src="{{ asset('storage/' . $language->image) }}" alt="Language Image" width="120" height="80" style="object-fit: cover; border-radius: 8px;">
                                     @endif
-                                    <input type="file" class="form-control mt-2" id="image" name="image">
+                                    <input 
+                                        type="file" 
+                                        class="form-control mt-2 @error('image') is-invalid @enderror" 
+                                        id="image" 
+                                        name="image"
+                                    >
+                                    @error('image')
+                                        <span class="invalid-feedback">{{ $message }}</span>
+                                    @enderror
                                 </div>
 
-                                <!-- Project URL -->
-
-
-                                <!-- Project Description -->
+                                <!-- Description -->
                                 <div class="form-group mb-3">
                                     <label for="description">Description</label>
-                                    <textarea class="form-control" id="description" name="description" rows="4" placeholder="Enter project description" required>{{ old('description', $language->description) }}</textarea>
+                                    <textarea 
+                                        class="form-control @error('description') is-invalid @enderror" 
+                                        id="description" 
+                                        name="description" 
+                                        rows="4" 
+                                        placeholder="Enter language description" 
+                                        required
+                                    >{{ old('description', $language->description) }}</textarea>
+                                    @error('description')
+                                        <span class="invalid-feedback">{{ $message }}</span>
+                                    @enderror
                                 </div>
 
-                                <button type="submit" class="btn btn-primary">Update language</button>
+                                <!-- Submit Button -->
+                                <button type="submit" class="btn btn-primary">Update Language</button>
                             </form>
                         </div>
                     </div>
