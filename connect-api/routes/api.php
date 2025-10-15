@@ -15,3 +15,4 @@ Route::get('/student', function () {
 
 
 Route::get('/studentapi',[StudentController::class,'list']);
+Route::get('/pullrequests',[StudentController::class,'index']);
