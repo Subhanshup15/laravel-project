@@ -40,11 +40,10 @@ return [
             'driver' => 'session',
             'provider' => 'users',
         ],
-        'api' => [
-            'driver' => 'passport', // 👈 Changed from 'token' to 'passport'
-            'provider' => 'users',
-            'hash' => false,
-        ],
+       'api' => [
+        'driver' => 'sanctum', // ✅ Laravel 11
+        'provider' => 'users',
+    ],
     ],
 
     /*

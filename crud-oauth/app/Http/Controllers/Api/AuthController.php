@@ -10,7 +10,7 @@ use Illuminate\Support\Facades\Hash;
 
 class AuthController extends Controller
 {
-    // Register a new user
+    // ✅ Register
     public function register(Request $request)
     {
         $data = $request->validate([
@@ -29,11 +29,12 @@ class AuthController extends Controller
 
         return response()->json([
             'user' => $user,
-            'token' => $token
+            'token' => $token,
+            'message' => 'Registered successfully'
         ], 201);
     }
 
-    // Login user
+    // ✅ Login
     public function login(Request $request)
     {
         $credentials = $request->validate([
@@ -50,21 +51,29 @@ class AuthController extends Controller
 
         return response()->json([
             'user' => $user,
-            'token' => $token
+            'token' => $token,
+            'message' => 'Login successful'
         ]);
     }
 
-    // Get authenticated user info
+    // ✅ Get User
     public function me(Request $request)
     {
         return response()->json($request->user());
     }
 
-    // Logout user (revoke current token)
-    public function logout(Request $request)
-    {
-        $request->user()->currentAccessToken()->delete();
-
-        return response()->json(['message' => 'Logged out successfully']);
-    }
+   public function logout(Request $request)
+{
+    $user = $request->user();
+    
+    // Option 1: Logout from THIS DEVICE ONLY (Your original)
+    $user->currentAccessToken()->delete();
+    
+    // Option 2: UNCOMMENT for LOGOUT EVERYWHERE
+    // $user->tokens()->delete();
+    
+    return response()->json([
+        'message' => 'Logged out successfully'
+    ]);
+}
 }
