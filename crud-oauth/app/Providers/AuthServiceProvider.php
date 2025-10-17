@@ -11,13 +11,11 @@ class AuthServiceProvider extends ServiceProvider
         // 'App\Models\Model' => 'App\Policies\ModelPolicy',
     ];
 
-    public function boot()
-    {
-        $this->registerPolicies();
+   public function boot()
+{
+    $this->registerPolicies();
 
-        // 👈 REMOVED: Passport::routes() - NOT NEEDED IN LARAVEL 11+
-
-        // Token expiration (optional: 1 year)
-        Passport::tokensExpireIn(now()->addYear());
-    }
+    // Optional: set token expiration
+    Passport::tokensExpireIn(now()->addYear());
+}
 }

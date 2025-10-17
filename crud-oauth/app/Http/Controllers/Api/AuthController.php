@@ -10,27 +10,30 @@ use Illuminate\Support\Facades\Hash;
 
 class AuthController extends Controller
 {
-  public function register(Request $request)
-{
-    // ✅ REMOVED: return "hello";die(); 
-    
-    $data = $request->validate([
-        'name' => 'required|string|max:255',
-        'email' => 'required|email|unique:users,email',
-        'password' => 'required|string|min:8|confirmed',
-    ]);
+    // Register a new user
+    public function register(Request $request)
+    {
+        $data = $request->validate([
+            'name' => 'required|string|max:255',
+            'email' => 'required|email|unique:users,email',
+            'password' => 'required|string|min:8|confirmed',
+        ]);
 
-    $user = User::create([
-        'name' => $data['name'],
-        'email' => $data['email'],
-        'password' => Hash::make($data['password']),
-    ]);
+        $user = User::create([
+            'name' => $data['name'],
+            'email' => $data['email'],
+            'password' => Hash::make($data['password']),
+        ]);
 
-    $token = $user->createToken('api', ['access-api'])->accessToken;
+        $token = $user->createToken('api-token')->plainTextToken;
 
-    return response()->json(['user' => $user, 'token' => $token], 201);
-}
+        return response()->json([
+            'user' => $user,
+            'token' => $token
+        ], 201);
+    }
 
+    // Login user
     public function login(Request $request)
     {
         $credentials = $request->validate([
@@ -43,19 +46,25 @@ class AuthController extends Controller
         }
 
         $user = Auth::user();
-        $token = $user->createToken('api', ['access-api'])->accessToken;
+        $token = $user->createToken('api-token')->plainTextToken;
 
-        return response()->json(['user' => $user, 'token' => $token]);
+        return response()->json([
+            'user' => $user,
+            'token' => $token
+        ]);
     }
 
+    // Get authenticated user info
     public function me(Request $request)
     {
-        return $request->user();
+        return response()->json($request->user());
     }
 
+    // Logout user (revoke current token)
     public function logout(Request $request)
     {
-        $request->user()->token()->revoke();
-        return response()->json(['message' => 'Logged out']);
+        $request->user()->currentAccessToken()->delete();
+
+        return response()->json(['message' => 'Logged out successfully']);
     }
 }
