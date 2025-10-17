@@ -10,7 +10,7 @@ use Illuminate\Support\Facades\Hash;
 
 class AuthController extends Controller
 {
-    // ✅ Register
+    // Register
     public function register(Request $request)
     {
         $data = $request->validate([
@@ -25,7 +25,9 @@ class AuthController extends Controller
             'password' => Hash::make($data['password']),
         ]);
 
-        $token = $user->createToken('api-token')->plainTextToken;
+        // Passport personal access token
+        $tokenResult = $user->createToken('API Token');
+        $token = $tokenResult->accessToken;
 
         return response()->json([
             'user' => $user,
@@ -34,46 +36,46 @@ class AuthController extends Controller
         ], 201);
     }
 
-    // ✅ Login
+    // Login
     public function login(Request $request)
-    {
-        $credentials = $request->validate([
-            'email' => 'required|email',
-            'password' => 'required|string',
-        ]);
+{
+    $credentials = $request->validate([
+        'email' => 'required|email',
+        'password' => 'required|string',
+    ]);
 
-        if (!Auth::attempt($credentials)) {
-            return response()->json(['message' => 'Invalid credentials'], 401);
-        }
-
-        $user = Auth::user();
-        $token = $user->createToken('api-token')->plainTextToken;
-
-        return response()->json([
-            'user' => $user,
-            'token' => $token,
-            'message' => 'Login successful'
-        ]);
+    if (!Auth::attempt($credentials)) {
+        return response()->json(['message' => 'Invalid credentials'], 401);
     }
 
-    // ✅ Get User
+    $user = Auth::user();
+    $tokenResult = $user->createToken('API Token');
+    $token = $tokenResult->accessToken;
+
+    return response()->json([
+        'user' => $user,
+        'token' => $token,
+        'message' => 'Login successful'
+    ]);
+}
+
+
+    // Get authenticated user
     public function me(Request $request)
     {
         return response()->json($request->user());
     }
 
-   public function logout(Request $request)
-{
-    $user = $request->user();
-    
-    // Option 1: Logout from THIS DEVICE ONLY (Your original)
-    $user->currentAccessToken()->delete();
-    
-    // Option 2: UNCOMMENT for LOGOUT EVERYWHERE
-    // $user->tokens()->delete();
-    
-    return response()->json([
-        'message' => 'Logged out successfully'
-    ]);
-}
+    // Logout
+    public function logout(Request $request)
+    {
+        $user = $request->user();
+
+        // Revoke all tokens for this user
+        $user->tokens()->delete();
+
+        return response()->json([
+            'message' => 'Logged out successfully'
+        ]);
+    }
 }

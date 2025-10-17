@@ -41,7 +41,8 @@ return [
             'provider' => 'users',
         ],
        'api' => [
-        'driver' => 'sanctum', // ✅ Laravel 11
+      //  'driver' => 'sanctum', // ✅ Laravel 11
+         'driver' => 'passport', // ✅ Laravel 11
         'provider' => 'users',
     ],
     ],
