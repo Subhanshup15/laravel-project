@@ -9,7 +9,6 @@ Route::post('/auth/login', [AuthController::class, 'login']);
 
 // Protected routes (require auth:api)
 Route::middleware('auth:api')->group(function () {
-    Route::get('/auth/me', [AuthController::class, 'me']);
     Route::post('/auth/logout', [AuthController::class, 'logout']);
 });
 
