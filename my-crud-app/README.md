@@ -1,11 +1,16 @@
 STEP 1:composer create-project --prefer-dist laravel/laravel:^11.0 my-crud-app
-////////////////////////////////////////////////////////////
+
+
+
 STEP 2: cd my-crud-app
-////////////////////////////////////////////////////////////
+
+
 STEP 3: php artisan serve
-////////////////////////////////////////////////////////////
+
+
 STEP 4:Configure .env (database) Edit .env to match your DB credentials. Example (MySQL)
-/////////////////////////////////////////////////////////////
+
+
 STEP 5:Generate model + migration + factory + resource controller
        ==>php artisan make:model Post -m -f -c --resource
        // database/migrations/xxxx_xx_xx_create_posts_table.php
@@ -19,9 +24,11 @@ STEP 5:Generate model + migration + factory + resource controller
             });
         }
       USE THIS MIGRATION 
-/////////////////////////////////////////////////////////////
+
+
 STEP 6:php artisan migrate
-/////////////////////////////////////////////////////////////
+
+
 STEP 7:Model: fillable & casts Edit app/Models/Post.php: <?php
 
 namespace App\Models;
@@ -36,7 +43,8 @@ class Post extends Model
     protected $fillable = ['title', 'body'];
 }
 
-/////////////////////////////////////////////////////////////
+
+
 STEP 8:Factory & Seeder (optional sample data)
 Factory (database/factories/PostFactory.php) 
 
@@ -49,22 +57,21 @@ public function definition()
 }
 
 
-////////////////////////////////////////////////////////////
+
+
 STEP 9:Seeder: php artisan make:seeder PostSeeder and inside:
 Seeder: php artisan make:seeder PostSeeder and inside:
-/////////////////////////////////////////////////////////////
+
+
 STEP 10:Register in DatabaseSeeder.php
-
-
 $this->call(PostSeeder::class);
 
-////////////////////////////////////////////////////////////
+
 STEP 11:php artisan db:seed
 
-////////////////////////////////////////////////////////////
+
 STEP 12:Controller: implement resource methods with validation Open app/Http/Controllers/PostController.php and implement:
 <?php
-
 namespace App\Http\Controllers;
 
 use App\Models\Post;
@@ -124,22 +131,19 @@ class PostController extends Controller
     }
 }
 
-////////////////////////////////////////////////////////////
+
+
 STEP 13:Routes (web) 
          Add resource routes to routes/web.php:
-
-
          use App\Http\Controllers\PostController;
-
 Route::get('/', function () {
     return redirect()->route('posts.index');
 });
 
 Route::resource('posts', PostController::class);
 
-////////////////////////////////////////////////////////////
-STEP 14:Blade Views (simple Bootstrap-based)
 
+STEP 14:Blade Views (simple Bootstrap-based)
 Create resources/views/layouts/app.blade.php
 
 <!doctype html>
@@ -161,12 +165,11 @@ Create resources/views/layouts/app.blade.php
 </body>
 </html>
 
-////////////////////////////////////////////////////////////
+
+
 STEP 15:Index: resources/views/posts/index.blade.php
 @extends('layouts.app')
-
 @section('title', 'Posts')
-
 @section('content')
   <div class="d-flex justify-content-between mb-3">
     <h1>Posts</h1>
@@ -202,9 +205,10 @@ STEP 15:Index: resources/views/posts/index.blade.php
   @endif
 @endsection
 
-////////////////////////////////////////////////////////////
-STEP 16:Create/Edit form partial resources/views/posts/form.blade.php
 
+
+
+STEP 16:Create/Edit form partial resources/views/posts/form.blade.php
 @csrf
 <div class="mb-3">
   <label class="form-label">Title</label>
@@ -221,12 +225,11 @@ STEP 16:Create/Edit form partial resources/views/posts/form.blade.php
 <button class="btn btn-primary" type="submit">Save</button>
 <a href="{{ route('posts.index') }}" class="btn btn-secondary">Back</a>
 
-////////////////////////////////////////////////////////////
+
+
 STEP 17:Create view resources/views/posts/create.blade.php
 @extends('layouts.app')
-
 @section('title', 'Create Post')
-
 @section('content')
   <h1>Create Post</h1>
   <form action="{{ route('posts.store') }}" method="POST">
@@ -234,12 +237,11 @@ STEP 17:Create view resources/views/posts/create.blade.php
   </form>
 @endsection
 
-////////////////////////////////////////////////////////////
+
+
 STEP 18:Edit view resources/views/posts/edit.blade.php
 @extends('layouts.app')
-
 @section('title', 'Edit Post')
-
 @section('content')
   <h1>Edit Post</h1>
   <form action="{{ route('posts.update', $post) }}" method="POST">
@@ -249,11 +251,10 @@ STEP 18:Edit view resources/views/posts/edit.blade.php
 @endsection
 
 
-////////////////////////////////////////////////////////////
+
+
 STEP 19:Show view resources/views/posts/show.blade.php
-
 @extends('layouts.app')
-
 @section('content')
   <h1>{{ $post->title }}</h1>
   <p>{{ $post->body }}</p>
@@ -261,13 +262,9 @@ STEP 19:Show view resources/views/posts/show.blade.php
 @endsection
 
 
-////////////////////////////////////////////////////////////
+
 STEP 20:API endpoints (optional)
           If you prefer an API instead of Blade views, add an API resource controller:
-          
 use App\Http\Controllers\Api\PostApiController;
 Route::apiResource('posts', PostApiController::class);
 
-
-////////////////////////////////////////////////////////////
-STEP 21:
