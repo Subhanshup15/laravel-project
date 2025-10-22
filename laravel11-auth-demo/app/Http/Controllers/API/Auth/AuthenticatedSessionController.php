@@ -25,4 +25,10 @@ class AuthenticatedSessionController extends Controller
         $request->user()->currentAccessToken()?->delete();
         return response()->noContent();
     }
+
+
+
 }
+
+
+
